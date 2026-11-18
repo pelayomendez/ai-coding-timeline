@@ -54,9 +54,37 @@ export function createWorld({ webglHost, cssHost, tokens, cards, colors, reduced
   ));
   scene.add(new THREE.Points(
     new THREE.BufferGeometry().setFromPoints(curve.getSpacedPoints(S.road.dots)),
-    new THREE.PointsMaterial({ color: roadColor, size: S.road.dotSize, map: glow, transparent: true, depthWrite: false,
-      opacity: S.road.opacity * 1.6, blending: THREE.AdditiveBlending }),
+    new THREE.PointsMaterial({ color: roadColor, size: S.road.dotSize, transparent: true, opacity: S.road.opacity * 1.5 }),
   ));
+
+  // ---- Retro geometry: a wireframe floor under the road, and a few wireframe solids in space ----
+  const floorY = -S.grid.depth;
+  const gridSize = Math.ceil((length + 40) / S.grid.cell) * S.grid.cell;
+  const grid = new THREE.GridHelper(gridSize, gridSize / S.grid.cell, S.grid.color, S.grid.color);
+  grid.material.transparent = true;
+  grid.material.opacity = S.grid.opacity;
+  grid.position.set(0, floorY, -length / 2);
+  scene.add(grid);
+
+  const solids = [];
+  const shapes = [
+    new THREE.IcosahedronGeometry(1, 0), new THREE.OctahedronGeometry(1, 0),
+    new THREE.TetrahedronGeometry(1, 0), new THREE.BoxGeometry(1.4, 1.4, 1.4),
+  ];
+  for (let i = 0; i < S.solids.count; i++) {
+    const t = (i + 0.5) / S.solids.count;
+    const p = curve.getPointAt(t);
+    const side = i % 2 ? 1 : -1;
+    const mesh = new THREE.LineSegments(
+      new THREE.EdgesGeometry(shapes[i % shapes.length]),
+      new THREE.LineBasicMaterial({ color: S.solids.color, transparent: true, opacity: S.solids.opacity }),
+    );
+    mesh.position.set(p.x + side * (9 + Math.random() * 8), p.y + 2 + Math.random() * 6, p.z - Math.random() * 6);
+    mesh.scale.setScalar(S.solids.size * (0.6 + Math.random() * 0.8));
+    mesh.rotation.set(Math.random() * 3, Math.random() * 3, 0);
+    scene.add(mesh);
+    solids.push(mesh);
+  }
 
   // ---- Stars around the road ----
   const stars = new Float32Array(S.stars.count * 3);
@@ -68,8 +96,7 @@ export function createWorld({ webglHost, cssHost, tokens, cards, colors, reduced
   const starGeo = new THREE.BufferGeometry();
   starGeo.setAttribute('position', new THREE.BufferAttribute(stars, 3));
   scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({
-    color: S.stars.color, size: S.stars.size, map: glow, transparent: true, depthWrite: false,
-    opacity: 0.8, blending: THREE.AdditiveBlending,
+    color: S.stars.color, size: S.stars.size, transparent: true, opacity: 0.7,
   })));
 
   // ---- Events: marker on the road, card beside it, a thin stem between them ----
@@ -93,10 +120,10 @@ export function createWorld({ webglHost, cssHost, tokens, cards, colors, reduced
     ring.lookAt(p.clone().add(tangent));
     scene.add(ring);
     const halo = new THREE.Sprite(new THREE.SpriteMaterial({
-      map: glow, color, transparent: true, opacity: 0.35, depthWrite: false, blending: THREE.AdditiveBlending,
+      map: glow, color, transparent: true, opacity: S.marker.halo, depthWrite: false, blending: THREE.AdditiveBlending,
     }));
     halo.position.copy(p);
-    halo.scale.setScalar(S.marker.radius * 7);
+    halo.scale.setScalar(S.marker.radius * 5);
     scene.add(halo);
     ring.userData.halo = halo;
     rings.push(ring);
@@ -169,7 +196,7 @@ export function createWorld({ webglHost, cssHost, tokens, cards, colors, reduced
         const on = i === active;
         r.material.opacity = on ? 1 : 0.45;
         r.scale.setScalar(on ? 1.35 : 1);
-        r.userData.halo.material.opacity = on ? 0.9 : 0.3;
+        r.userData.halo.material.opacity = on ? S.marker.halo * 2 : S.marker.halo;
       });
       listeners.forEach((fn) => fn(active));
     }
@@ -181,6 +208,8 @@ export function createWorld({ webglHost, cssHost, tokens, cards, colors, reduced
       el.style.setProperty('--fade', fade.toFixed(3));
       el.style.visibility = fade < 0.02 ? 'hidden' : '';
     }
+
+    if (!reducedMotion) solids.forEach((m, i) => { m.rotation.y += 0.0015 * (i % 2 ? 1 : -1); m.rotation.x += 0.0008; });
 
     const pos = pulseGeo.attributes.position;
     for (let i = 0; i < pulseCount; i++) {

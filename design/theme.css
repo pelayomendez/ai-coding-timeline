@@ -102,14 +102,12 @@ html, body {
 }
 .hud-top p { margin: 4px 0 0; font-family: var(--font-mono); font-size: 12px; color: var(--color-muted); letter-spacing: 0.08em; }
 /* Glow */
-.hud-top h1 { text-shadow: 0 0 24px color-mix(in srgb, var(--color-accent) 45%, transparent); }
+.hud-top h1 { text-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 20%, transparent); }
 .card.is-active {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45),
-              0 0 40px color-mix(in srgb, var(--tag) 28%, transparent),
-              inset 0 0 30px color-mix(in srgb, var(--tag) 8%, transparent);
+              0 0 28px color-mix(in srgb, var(--tag) 14%, transparent);
 }
-.card.is-active::before { box-shadow: 0 0 18px var(--tag); }
-.card.is-active time { text-shadow: 0 0 12px var(--tag); }
+.card.is-active::before { box-shadow: 0 0 8px var(--tag); }
 .ticks a.is-active { box-shadow: 0 -6px 14px -6px var(--tag, var(--color-accent)); }
 
 .credit { font-size: 12px !important; }
