@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "title": "A brief history of AI coding",
+    "subtitle": "Since November 2025",
+    "updated": "2026-11-18",
+    "tldr": "No one is writing code anymore, and we are still figuring out what that means.",
+    "credit": {
+      "label": "Original list by Matt Pocock",
+      "url": "https://x.com/mattpocockuk/status/2122287575557706226"
+    }
+  },
+  "tags": {
+    "models": "Models",
+    "practice": "Practice",
+    "tools": "Tools",
+    "culture": "Culture"
+  },
+  "glossary": {
+    "ralph-loop": "Run the same prompt against an agent in a loop until the task is done. Brute force, sometimes effective.",
+    "orchestration": "One agent splits the work, hands it to others and checks what comes back.",
+    "cognitive-debt": "Code in your product that nobody on the team understands, because nobody wrote it.",
+    "skills": "Packaged, shareable instructions an agent loads for a kind of task.",
+    "review-surface": "Whatever you use to judge an agent's work: a diff, a spec, a rendered page, a test report.",
+    "software-factory": "A pipeline where agents build software with little or no human in the loop.",
+    "dark-factory": "A software factory that runs with the lights off: no humans at all.",
+    "asd-ste100": "Simplified Technical English: short sentences and a fixed vocabulary, written for manuals."
+  },
+  "events": [
+    {
+      "id": "2025-11",
+      "date": "2025-11",
+      "title": "Opus 4.5, and OpenClaw gets built",
+      "summary": "Opus 4.5 releases. OpenClaw gets built.",
+      "tags": [
+        "models",
+        "tools"
+      ],
+      "terms": [],
+      "sources": [
+        {
+          "label": "Anthropic · Introducing Claude Opus 4.5",
+          "url": "https://www.anthropic.com/news/claude-opus-4-5"
+        },
+        {
+          "label": "OpenClaw",
+          "url": "https://openclaw.ai/"
+        }
+      ]
+    },
+    {
+      "id": "2025-12",
+      "date": "2025-12",
+      "title": "Good enough for 95%",
+      "summary": "The community agrees that models are good enough to handle 95% of coding tasks.",
+      "tags": [
+        "models",
+        "culture"
+      ],
+      "terms": [],
+      "sources": []
+    },
+    {
+      "id": "2026-01",
+      "date": "2026-01",
+      "title": "Ralph loops",
+      "summary": "Ralph loops get popular. Early efforts on loops and orchestration.",
+      "tags": [
+        "practice"
+      ],
+      "terms": [
+        "ralph-loop",
+        "orchestration"
+      ],
+      "sources": [
+        {
+          "label": "Geoffrey Huntley · Ralph",
+          "url": "https://ghuntley.com/ralph/"
+        },
+        {
+          "label": "VentureBeat",
+          "url": "https://venturebeat.com/technology/how-ralph-wiggum-went-from-the-simpsons-to-the-biggest-name-in-ai-right-now"
+        }
+      ]
+    },
+    {
+      "id": "2026-02",
+      "date": "2026-02",
+      "title": "Everyone is knackered",
+      "summary": "Too much strategic decision-making. Fears around cognitive debt begin.",
+      "tags": [
+        "culture"
+      ],
+      "terms": [
+        "cognitive-debt"
+      ],
+      "sources": [
+        {
+          "label": "Margaret-Anne Storey · Cognitive debt",
+          "url": "https://margaretstorey.com/blog/2026/02/09/cognitive-debt/"
+        }
+      ]
+    },
+    {
+      "id": "2026-03",
+      "date": "2026-03",
+      "title": "The skills explosion",
+      "summary": "The community converges on easy-to-share processes. Superpowers was already ahead of the game here.",
+      "tags": [
+        "practice",
+        "tools"
+      ],
+      "terms": [
+        "skills"
+      ],
+      "sources": [
+        {
+          "label": "obra/superpowers",
+          "url": "https://github.com/obra/superpowers"
+        },
+        {
+          "label": "Anthropic · Agent Skills",
+          "url": "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills"
+        }
+      ]
+    },
+    {
+      "id": "2026-04",
+      "date": "2026-04",
+      "title": "No code in months",
+      "summary": "Most state-of-the-art developers haven't written a line of code in months.",
+      "tags": [
+        "culture"
+      ],
+      "terms": [],
+      "sources": [
+        {
+          "label": "Entrepreneur · No code in 8 months",
+          "url": "https://www.entrepreneur.com/business-news/creator-of-anthropics-claude-code-hasnt-written-a-line-of-code-in-8-months"
+        }
+      ]
+    },
+    {
+      "id": "2026-05",
+      "date": "2026-05",
+      "title": "The unreasonable effectiveness of HTML",
+      "summary": "More interest in richer review surfaces.",
+      "tags": [
+        "practice"
+      ],
+      "terms": [
+        "review-surface"
+      ],
+      "sources": [
+        {
+          "label": "Simon Willison",
+          "url": "https://simonwillison.net/2026/May/8/unreasonable-effectiveness-of-html/"
+        }
+      ]
+    },
+    {
+      "id": "2026-06",
+      "date": "2026-06",
+      "title": "Loop Engineering",
+      "summary": "\"Loop Engineering\" wins vaguepost of the year, a sign of more hype around process.",
+      "tags": [
+        "culture",
+        "practice"
+      ],
+      "terms": [],
+      "sources": [
+        {
+          "label": "ADTmag · Loop Engineering",
+          "url": "https://adtmag.com/articles/2026/07/01/loop-engineering-emerges-as-developers-put-ai-coding-agents-on-repeat.aspx"
+        }
+      ]
+    },
+    {
+      "id": "2026-07",
+      "date": "2026-07",
+      "title": "Here is my software factory",
+      "summary": "Every talk at every conference becomes \"here is my software factory\".",
+      "tags": [
+        "culture"
+      ],
+      "terms": [
+        "software-factory"
+      ],
+      "sources": [
+        {
+          "label": "Latent Space · AIE World's Fair",
+          "url": "https://latent.space/p/aiewf26trends/"
+        }
+      ]
+    },
+    {
+      "id": "2026-08",
+      "date": "2026-08",
+      "title": "Opus 5 speaks incomprehensibly",
+      "summary": "Interest in ASD-STE100 peaks.",
+      "tags": [
+        "models"
+      ],
+      "terms": [
+        "asd-ste100"
+      ],
+      "sources": [
+        {
+          "label": "Anthropic · Introducing Claude Opus 5",
+          "url": "https://www.anthropic.com/news/claude-opus-5"
+        }
+      ]
+    },
+    {
+      "id": "2026-09",
+      "date": "2026-09",
+      "title": "Manager threads",
+      "summary": "Grok Bot gets popular. More interest in long-running \"manager\" threads that keep context and delegate work.",
+      "tags": [
+        "tools",
+        "practice"
+      ],
+      "terms": [
+        "orchestration"
+      ],
+      "sources": [
+        {
+          "label": "Grok release notes",
+          "url": "https://grok.com/release-notes"
+        }
+      ]
+    },
+    {
+      "id": "2026-10",
+      "date": "2026-10",
+      "title": "Where are the speed gains?",
+      "summary": "The promised speed gains haven't materialised. The dark factory still feels a long way off.",
+      "tags": [
+        "culture"
+      ],
+      "terms": [
+        "dark-factory"
+      ],
+      "sources": [
+        {
+          "label": "NBER · Writing code vs. shipping code",
+          "url": "https://www.nber.org/papers/w35275"
+        },
+        {
+          "label": "Simon Willison · Software factory",
+          "url": "https://simonwillison.net/2026/Feb/7/software-factory/"
+        }
+      ]
+    },
+    {
+      "id": "2026-11",
+      "date": "2026-11",
+      "title": "The No-slop manifesto",
+      "summary": "The No-slop manifesto is released. Reading the code still appears essential.",
+      "tags": [
+        "culture",
+        "practice"
+      ],
+      "terms": [],
+      "sources": [
+        {
+          "label": "No AI Slop Manifesto",
+          "url": "https://www.slopmanifesto.com/"
+        }
+      ]
+    }
+  ]
+}

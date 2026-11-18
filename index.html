@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A brief history of AI coding</title>
+  <link rel="icon" href="data:,">
+  <!-- Design: fonts and theme. Content is in data/timeline.json. -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Saira+Condensed:wght@500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="design/theme.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="webgl" aria-hidden="true"></div>
+  <div id="css"></div>
+
+  <header class="hud-top">
+    <div>
+      <h1 id="title"></h1>
+      <p id="subtitle"></p>
+      <p id="tldr" class="tldr"></p>
+      <p id="credit" class="credit"></p>
+    </div>
+    <button id="view-toggle" type="button" aria-pressed="false">List view</button>
+  </header>
+
+  <main id="list" class="list" hidden></main>
+
+  <p class="hint">Scroll, use the arrow keys or pick a month</p>
+  <nav id="ticks" class="ticks" aria-label="Months"></nav>
+  <div id="sr" class="sr-only" aria-live="polite"></div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
